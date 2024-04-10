@@ -17,8 +17,9 @@ def test_math_expression():
     result = run_python_command(cmd)
     assert result == "4.0"
 
-def test_store_command_and_output(store_file):
-    assert store_file.file.read_text() == f"{store_file.cmd}\n{store_file.output}\n"
+def test_store_command_and_output(prepopulated_cache_file):
+    expected = f"{prepopulated_cache_file.cmd}\n{prepopulated_cache_file.output}\n"
+    assert prepopulated_cache_file.file.read_text() == expected
 
 '''
 def test_store_commands_append(tmp_path):
