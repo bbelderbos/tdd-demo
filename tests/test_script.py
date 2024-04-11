@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-from repl.script import run_python_command, store_command
+from repl.script import run_python_command
 
 
 def test_run_addition():
@@ -27,13 +27,13 @@ def test_store_command_and_output(prepopulated_cache_file):
 
 def test_store_commands_append(prepopulated_cache_file_more_commands):
     expected = dedent(
+        """\
+        import math; math.sqrt(16)
+        4.0
+        [x * 2 for x in range(5)]
+        [0, 2, 4, 6, 8]
         """
-    import math; math.sqrt(16)
-    4.0
-    [x * 2 for x in range(5)]
-    [0, 2, 4, 6, 8]
-    """
-    ).lstrip()
+    )
 
     file_content = prepopulated_cache_file_more_commands.file.read_text()
     assert file_content == expected
