@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import NamedTuple
 
 import pytest
@@ -8,7 +9,7 @@ from repl.script import store_command
 class Command(NamedTuple):
     cmd: str
     output: str
-    file: str
+    file: Path
 
 
 @pytest.fixture
